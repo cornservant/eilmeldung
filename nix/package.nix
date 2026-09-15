@@ -16,6 +16,10 @@ rustPlatform.buildRustPackage {
 
   cargoLock = {
     lockFile = "${src}/Cargo.lock";
+
+    outputHashes = {
+      "ratatui-table-0.1.0" = "sha256-vgHE8FnhXvY16buGsqj9ObfqmWHdIP+LblHTg1O9v+Q=";
+    };
   };
 
   nativeBuildInputs = [

@@ -7,9 +7,9 @@ use ratatui::layout::Constraint;
 use ratatui::layout::Rect;
 use ratatui::text::{Line, Span};
 use ratatui::widgets::{
-    Block, Borders, Row, Scrollbar, ScrollbarOrientation, ScrollbarState, StatefulWidget, Table,
-    TableState, Widget,
+    Block, Borders, Scrollbar, ScrollbarOrientation, ScrollbarState, StatefulWidget, Widget,
 };
+use ratatui_table::{Row, Table, TableState};
 use strum::IntoEnumIterator;
 
 #[derive(Getters, MutGetters)]
@@ -173,7 +173,9 @@ impl Widget for &mut ArticlesList {
 #[derive(Default, Getters, MutGetters)]
 #[getset(get = "pub(super)")]
 pub struct ArticleListViewData<'a> {
+    #[getset(get_mut = "pub(super)")]
     table: Table<'a>,
+
     #[getset(get_mut = "pub(super)")]
     table_state: TableState,
 
@@ -439,7 +441,10 @@ impl<'a> ArticleListViewData<'a> {
                 .map(|placeholder| constraint_for_placeholder(placeholder))
                 .collect::<Vec<Constraint>>(),
         )
-        .row_highlight_style(selected_style);
+        .row_highlight_style(selected_style)
+        .scroll_padding(config.articles_after_selection)
+        .allow_overscroll(false)
+        .selection_must_be_visible(false);
     }
 
     pub(super) fn gen_block(
