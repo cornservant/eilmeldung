@@ -963,17 +963,16 @@ dependencies = [
 
 [[package]]
 name = "compact_str"
-version = "0.9.1"
+version = "0.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9dfdd1c2274d9aa354115b09dc9a901d6c5576818cdf70d14cae2bdb47df00ab"
+checksum = "79fcda08c33bb58b97008b2cdada6622500e949e060f5913361763121abd2416"
 dependencies = [
  "castaway",
  "cfg-if",
  "itoa",
- "rustversion",
- "ryu",
  "serde",
  "static_assertions",
+ "zmij",
 ]
 
 [[package]]
@@ -2332,6 +2331,15 @@ checksum = "1bd49230192a3797a9a4d6abe9b3eed6f7fa4c8a8a4947977c6f80025f92cbd8"
 dependencies = [
  "rustix 1.1.5",
  "windows-link 0.2.1",
+]
+
+[[package]]
+name = "getopts"
+version = "0.2.24"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "cfe4fbac503b8d1f88e6676011885f34b7174f46e59956bba534ba83abded4df"
+dependencies = [
+ "unicode-width 0.2.2",
 ]
 
 [[package]]
@@ -5148,8 +5156,7 @@ dependencies = [
 [[package]]
 name = "ratatui"
 version = "0.30.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3274ba0a2c5e1bcad2a2005d20f4dc59dad26b2eb0940fb094500dba4099d57d"
+source = "git+https://github.com/cornservant/ratatui?branch=pr%2Fimproved-mouse-scrolling-for-table#1ed339a17b38b23b7c6a0ebb35269ad80e51ce3b"
 dependencies = [
  "instability",
  "palette",
@@ -5166,14 +5173,13 @@ dependencies = [
 [[package]]
 name = "ratatui-core"
 version = "0.1.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cbb175c433c8e28a809d1f5773a2ae96e68c0ce40db865cbab1020bf33ae479c"
+source = "git+https://github.com/cornservant/ratatui?branch=pr%2Fimproved-mouse-scrolling-for-table#1ed339a17b38b23b7c6a0ebb35269ad80e51ce3b"
 dependencies = [
  "bitflags 2.13.2",
  "compact_str",
  "critical-section",
  "hashbrown 0.17.1",
- "itertools 0.14.0",
+ "itertools 0.15.0",
  "kasuari",
  "lru",
  "palette",
@@ -5188,8 +5194,7 @@ dependencies = [
 [[package]]
 name = "ratatui-crossterm"
 version = "0.1.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "567584a3b0e6a8203c23de40b4861497266725eb5363dbfd18a1edd603cca9f0"
+source = "git+https://github.com/cornservant/ratatui?branch=pr%2Fimproved-mouse-scrolling-for-table#1ed339a17b38b23b7c6a0ebb35269ad80e51ce3b"
 dependencies = [
  "cfg-if",
  "crossterm 0.28.1",
@@ -5221,8 +5226,7 @@ dependencies = [
 [[package]]
 name = "ratatui-macros"
 version = "0.7.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ed7dc68daa7498a43e4d68e0eb078427e10c38fbcfbb1e42d955f1fa2140d814"
+source = "git+https://github.com/cornservant/ratatui?branch=pr%2Fimproved-mouse-scrolling-for-table#1ed339a17b38b23b7c6a0ebb35269ad80e51ce3b"
 dependencies = [
  "ratatui-core",
  "ratatui-widgets",
@@ -5231,8 +5235,7 @@ dependencies = [
 [[package]]
 name = "ratatui-termina"
 version = "0.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c0bf912d9e66f057a759d92e386a280ea886b352ab757d6ac4d653c7ed2c43c2"
+source = "git+https://github.com/cornservant/ratatui?branch=pr%2Fimproved-mouse-scrolling-for-table#1ed339a17b38b23b7c6a0ebb35269ad80e51ce3b"
 dependencies = [
  "instability",
  "ratatui-core",
@@ -5242,8 +5245,7 @@ dependencies = [
 [[package]]
 name = "ratatui-termion"
 version = "0.1.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "87c732202fa5a71a9da0991013f0853e53f87048f45198e3a1ca3ee722accc2f"
+source = "git+https://github.com/cornservant/ratatui?branch=pr%2Fimproved-mouse-scrolling-for-table#1ed339a17b38b23b7c6a0ebb35269ad80e51ce3b"
 dependencies = [
  "instability",
  "ratatui-core",
@@ -5253,8 +5255,7 @@ dependencies = [
 [[package]]
 name = "ratatui-termwiz"
 version = "0.1.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "faf03e0380b7744054d6cb74224fe3adf062a029754933f575ca1e3b4c2ce977"
+source = "git+https://github.com/cornservant/ratatui?branch=pr%2Fimproved-mouse-scrolling-for-table#1ed339a17b38b23b7c6a0ebb35269ad80e51ce3b"
 dependencies = [
  "ratatui-core",
  "termwiz",
@@ -5276,14 +5277,13 @@ dependencies = [
 [[package]]
 name = "ratatui-widgets"
 version = "0.3.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "66e3d19bcc9130ca376277d93b60767ff121ace3be06f5f95f81dd68956407d1"
+source = "git+https://github.com/cornservant/ratatui?branch=pr%2Fimproved-mouse-scrolling-for-table#1ed339a17b38b23b7c6a0ebb35269ad80e51ce3b"
 dependencies = [
  "bitflags 2.13.2",
  "hashbrown 0.17.1",
  "indoc",
  "instability",
- "itertools 0.14.0",
+ "itertools 0.15.0",
  "line-clipping",
  "ratatui-core",
  "serde",
@@ -5862,7 +5862,7 @@ version = "0.27.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "bdd0be4d296f048bfb06dd01bbc80ef789ddd2e55583e8d2e6b804942abfabc2"
 dependencies = [
- "cssparser",
+ "cssparser 0.37.0",
  "ego-tree",
  "getopts",
  "html5ever 0.39.0",
@@ -6479,9 +6479,9 @@ dependencies = [
 
 [[package]]
 name = "termina"
-version = "0.3.3"
+version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9048a889effe34a5cddee0af7f53285198b16dca3be510858d38dfdb3e62a04e"
+checksum = "881a7f20ade48167027822c52a0aeca879afa3174b15c71997827826bce669f9"
 dependencies = [
  "bitflags 2.13.2",
  "parking_lot",
@@ -7085,11 +7085,11 @@ checksum = "c6f5d3c3b1bf09027a88a6bc961fc00497d651009560b5463668dc81b0fa87a8"
 
 [[package]]
 name = "unicode-truncate"
-version = "2.0.1"
+version = "3.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "16b380a1238663e5f8a691f9039c73e1cdae598a30e9855f541d29b08b53e9a5"
+checksum = "f5dde200aa133f5b6d9cc616878815ffaa45ad9529ef4a2f04d86bab91d63984"
 dependencies = [
- "itertools 0.14.0",
+ "itertools 0.15.0",
  "unicode-segmentation",
  "unicode-width 0.2.2",
 ]

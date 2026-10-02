@@ -72,3 +72,13 @@ serde_yaml = "0.9.34"
 claims = "0.8.0"
 rstest = "0.26.1"
 serde_assert = "0.8.0"
+
+[patch.crates-io]
+ratatui = { git = "https://github.com/cornservant/ratatui", branch = "pr/improved-mouse-scrolling-for-table" }
+ratatui-core = { git = "https://github.com/cornservant/ratatui", branch = "pr/improved-mouse-scrolling-for-table" }
+ratatui-widgets = { git = "https://github.com/cornservant/ratatui", branch = "pr/improved-mouse-scrolling-for-table" }
+ratatui-crossterm = { git = "https://github.com/cornservant/ratatui", branch = "pr/improved-mouse-scrolling-for-table" }
+ratatui-termina = { git = "https://github.com/cornservant/ratatui", branch = "pr/improved-mouse-scrolling-for-table" }
+ratatui-termion = { git = "https://github.com/cornservant/ratatui", branch = "pr/improved-mouse-scrolling-for-table" }
+ratatui-termwiz = { git = "https://github.com/cornservant/ratatui", branch = "pr/improved-mouse-scrolling-for-table" }
+ratatui-macros = { git = "https://github.com/cornservant/ratatui", branch = "pr/improved-mouse-scrolling-for-table" }
