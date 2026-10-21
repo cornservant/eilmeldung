@@ -2,6 +2,12 @@
 
 { lib
 , rustPlatform
+, pkg-config
+, cmake
+, perl
+, mold
+, aws-lc
+, sqlite
 }:
 
 rustPlatform.buildRustPackage {
@@ -11,6 +17,19 @@ rustPlatform.buildRustPackage {
   cargoLock = {
     lockFile = "${src}/Cargo.lock";
   };
+
+   nativeBuildInputs = [
+     rustPlatform.bindgenHook
+     pkg-config
+     cmake
+     perl
+     mold
+   ];
+
+  buildInputs = [
+    aws-lc
+    sqlite
+  ];
 
   meta = {
     description = "Feature-rich TUI RSS Reader based on the news-flash library";
