@@ -1,3 +1,5 @@
+{ src, version }:
+
 { lib
 , rustPlatform
 , pkg-config
@@ -5,8 +7,6 @@
 , perl
 , mold
 }:
-
-{ src, version }:
 
 rustPlatform.buildRustPackage {
   pname = "eilmeldung";
