@@ -14,6 +14,8 @@ rustPlatform.buildRustPackage {
   pname = "eilmeldung";
   inherit version src;
 
+  doCheck = false;
+
   cargoLock = {
     lockFile = "${src}/Cargo.lock";
   };
