@@ -5,6 +5,7 @@
 , pkg-config
 , aws-lc
 , sqlite
+, mold
 }:
 
 rustPlatform.buildRustPackage {
@@ -13,6 +14,7 @@ rustPlatform.buildRustPackage {
 
   nativeBuildInputs = [
     pkg-config
+    mold
   ];
 
   buildInputs = [
