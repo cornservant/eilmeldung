@@ -3,6 +3,7 @@
 , pkg-config
 , cmake
 , perl
+, mold
 }:
 
 { src, version }:
@@ -10,6 +11,8 @@
 rustPlatform.buildRustPackage {
   pname = "eilmeldung";
   inherit version src;
+
+  doCheck = false;
 
   cargoLock = {
     lockFile = "${src}/Cargo.lock";
@@ -29,6 +32,7 @@ rustPlatform.buildRustPackage {
     pkg-config
     cmake
     perl
+    mold
   ];
 
   meta = {

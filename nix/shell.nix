@@ -10,6 +10,7 @@ pkgs.mkShell {
     clippy
     rustfmt
     rustPlatform.bindgenHook
+    mold
   ];
 
 }
