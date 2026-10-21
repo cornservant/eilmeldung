@@ -9,6 +9,8 @@ pkgs.mkShell {
     rust-analyzer
     clippy
     rustfmt
+    rustPlatform.bindgenHook
+    mold
   ];
 
 }

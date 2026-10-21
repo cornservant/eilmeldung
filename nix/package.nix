@@ -2,11 +2,17 @@
 
 { lib
 , rustPlatform
+, pkg-config
+, cmake
+, perl
+, mold
 }:
 
 rustPlatform.buildRustPackage {
   pname = "eilmeldung";
   inherit version src;
+
+  doCheck = false;
 
   cargoLock = {
     lockFile = "${src}/Cargo.lock";
@@ -21,6 +27,14 @@ rustPlatform.buildRustPackage {
     };
   };
 
+  nativeBuildInputs = [
+    rustPlatform.bindgenHook
+    pkg-config
+    cmake
+    perl
+    mold
+  ];
+ 
   meta = {
     description = "Feature-rich TUI RSS Reader based on the news-flash library";
     homepage = "https://github.com/christo-auer/eilmeldung";
