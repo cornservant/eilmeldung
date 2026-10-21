@@ -6,6 +6,8 @@
 , cmake
 , perl
 , mold
+, aws-lc
+, sqlite
 }:
 
 rustPlatform.buildRustPackage {
@@ -34,7 +36,12 @@ rustPlatform.buildRustPackage {
     perl
     mold
   ];
- 
+
+  buildInputs = [
+    aws-lc
+    sqlite
+  ];
+
   meta = {
     description = "Feature-rich TUI RSS Reader based on the news-flash library";
     homepage = "https://github.com/christo-auer/eilmeldung";
