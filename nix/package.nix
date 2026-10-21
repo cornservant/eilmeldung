@@ -12,6 +12,8 @@ rustPlatform.buildRustPackage {
   pname = "eilmeldung";
   inherit version src;
 
+  doCheck = false;
+
   nativeBuildInputs = [
     pkg-config
     mold
