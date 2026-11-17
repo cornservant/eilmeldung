@@ -2,6 +2,7 @@
 use crate::prelude::*;
 use image::{DynamicImage, Pixel, Rgb, RgbaImage};
 use ratatui::style::Color;
+use ratatui_image::picker::ProtocolType;
 
 // adapted from https://github.com/ratatui/ratzilla/
 /// Converts an indexed color (0-255) to an RGB value.
@@ -157,7 +158,7 @@ pub fn apply_image_enhancements(
 }
 
 pub fn to_drop_shadow_width(config: &Config, picker: &ratatui_image::picker::Picker) -> u32 {
-    if config.article_images_drop_shadow {
+    if config.article_images_drop_shadow && picker.protocol_type() != ProtocolType::Halfblocks {
         (picker.font_size().width / 3) as u32
     } else {
         0
