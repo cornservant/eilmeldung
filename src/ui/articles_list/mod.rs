@@ -163,6 +163,25 @@ impl ArticlesList {
         Ok(())
     }
 
+    pub(super) fn open_comments_in_browser(&mut self, action_scope: &ActionScope) -> color_eyre::Result<()> {
+        let articles = self.get_articles_by_action_scope(action_scope)?;
+
+        for article in articles.iter() {
+            if let Some(url) = article.comments_url.as_deref()
+                && let Err(error) = webbrowser::open(url.as_ref())
+            {
+                tooltip(
+                    &self.message_sender,
+                    format!("unable to open article in webbrowser: {}", error).as_str(),
+                    TooltipFlavor::Error,
+                )?;
+                break;
+            }
+        }
+
+        Ok(())
+    }
+
     pub(super) fn get_current_article(&self) -> Option<Article> {
         if let Some(index) = self.view_data.get_table_state().selected() {
             return self.model_data.articles().get(index).cloned();
@@ -204,17 +223,6 @@ impl ArticlesList {
 
         let scrollbar_state = self.view_data.scrollbar_state_mut();
         *scrollbar_state = scrollbar_state.position(index);
-
-        let Some(lines) = *self.view_data.article_lines() else {
-            return;
-        };
-        let offset = self.view_data.get_table_state_mut().offset_mut();
-        let max_lines_above =
-            (lines as usize).saturating_sub(self.config.articles_after_selection + 1);
-
-        if index.saturating_sub(*offset) > max_lines_above {
-            *offset = index.saturating_sub(max_lines_above);
-        }
     }
 
     pub(super) fn get_articles_by_action_scope(
@@ -608,6 +616,10 @@ impl crate::messages::MessageReceiver for ArticlesList {
                 // actions
                 C::ActionOpenInBrowser(action_scope) => {
                     self.open_in_browser(&action_scope)?;
+                }
+
+                C::ActionOpenCommentsInBrowser(action_scope) => {
+                    self.open_comments_in_browser(&action_scope)?;
                 }
 
                 C::ActionSetRead(action_scope) if handle_command => {
