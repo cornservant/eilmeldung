@@ -5,14 +5,18 @@
 , pkg-config
 , aws-lc
 , sqlite
+, mold
 }:
 
 rustPlatform.buildRustPackage {
   pname = "eilmeldung";
   inherit version src;
 
+  doCheck = false;
+
   nativeBuildInputs = [
     pkg-config
+    mold
   ];
 
   buildInputs = [
@@ -22,6 +26,15 @@ rustPlatform.buildRustPackage {
 
   cargoLock = {
     lockFile = "${src}/Cargo.lock";
+
+    outputHashes = {
+      "ratatui-0.30.2" = "sha256-8l6XZ+xm339kQibmNo21G5BHVvvNVJlYOfwftWQSs4s=";
+      "ratatui-core-0.1.2" = "";
+      "ratatui-crossterm-0.1.2" = "";
+      "ratatui-macros-0.7.2" = "";
+      "ratatui-termina-0.1.0" = "";
+      "ratatui-widgets-0.3.2" = "";
+    };
   };
 
   meta = {
